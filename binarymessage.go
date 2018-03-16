@@ -42,6 +42,7 @@ type BinaryMessageInterface interface {
 	WriteInterface(interface{})
 	WriteIntAsUint8(int)
 	WriteIntAsUint16(int)
+	WriteIntAsUint32(int)
 	WriteFloatAsUint16(float64)
 	WriteFloatAsInt16(float64)
 	WriteBytes([]byte)
@@ -60,6 +61,13 @@ func NewBinaryMessage() *BinaryMessage {
 type BinaryMessage struct {
 	buffer *bytes.Buffer
 	error  error
+}
+
+func (m *BinaryMessage) WriteIntAsUint32(data int) {
+	err := writeToBuffer(m.buffer, uint32(data))
+	if err != nil {
+		m.error = err
+	}
 }
 
 func (m *BinaryMessage) WriteInterface(data interface{}) {
