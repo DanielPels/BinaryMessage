@@ -70,6 +70,13 @@ func (m *BinaryMessage) WriteIntAsUint32(data int) {
 	}
 }
 
+func (m *BinaryMessage) WriteIntAsInt32(data int) {
+	err := writeToBuffer(m.buffer, int32(data))
+	if err != nil {
+		m.error = err
+	}
+}
+
 func (m *BinaryMessage) WriteInterface(data interface{}) {
 	err := writeToBuffer(m.buffer, data)
 	if err != nil {
