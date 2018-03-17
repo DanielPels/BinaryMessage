@@ -43,6 +43,7 @@ type BinaryMessageInterface interface {
 	WriteIntAsUint8(int)
 	WriteIntAsUint16(int)
 	WriteIntAsUint32(int)
+	WriteIntAsInt32(int)
 	WriteFloatAsUint16(float64)
 	WriteFloatAsInt16(float64)
 	WriteBytes([]byte)
